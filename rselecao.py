@@ -1,5 +1,26 @@
 
-def RSelect(input_list,n):
+
+def partition(input_list, pivot_index):
+    
+    pivot = input_list[pivot_index]
+    menores = []
+    maiores = []
+    iguais = []  # Lida com elementos iguais ao pivô (boa prática)
+
+    for x in input_list:
+        if x < pivot:
+            menores.append(x)
+        elif x > pivot:
+            maiores.append(x)
+        else:
+            iguais.append(x)
+
+    return menores + iguais + maiores, len(menores)  # Retorna a lista particionada e a posição do pivô
+
+
+
+
+def RSelect(input_list,i):
     
     n = len(input_list)
 
