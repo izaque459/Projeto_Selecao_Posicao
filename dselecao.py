@@ -32,10 +32,12 @@ def DSelect(input_list,i):
     pivot_index = random.randint(0,n-1)
     
     C = []
-    for h in range(0,n/5):
-        C[h] = 
+    for h in range(0,int(n/5)):
+        grupo = input_list[h*5:(h+1)*5]
+        grupo.sort()
+        C.append(grupo[len(grupo)//2])
     
-    pivot_index = DSelect(C,)
+    pivot_index = input_list.index(DSelect(C,len(C)//2))
     
     
     partitioned_list, j = partition(input_list, pivot_index)  # Particiona
