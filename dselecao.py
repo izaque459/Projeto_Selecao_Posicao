@@ -1,3 +1,9 @@
+
+#data: 07/02/2025
+# o algoritmo DSelect seleciona o elemento em posicao estatisca de um array
+# considerado melhor o RSelect , em teoria, pois garante un tempo de
+# complexidade linear sempre, mas devido a implementações para manipular a mediana
+# das medianas acaba sendo lento na prática.
 import random
 
 def partition(input_list, pivot_index):
@@ -32,12 +38,25 @@ def DSelect(input_list,i):
     pivot_index = random.randint(0,n-1)
     
     C = []
-    for h in range(0,int(n/5)):
+    for h in range(0,n//5):
         grupo = input_list[h*5:(h+1)*5]
         grupo.sort()
         C.append(grupo[len(grupo)//2])
     
-    pivot_index = input_list.index(DSelect(C,len(C)//2))
+    if n%5:
+        grupo = input_list[(n//5)*5:]
+        grupo.sort()
+        C.append(grupo[len(grupo)//2])
+    
+    if len(C) == 1:
+        pivot = C[0]
+    else:
+        pivot = DSelect(C,(len(C)+1)//2)
+    
+    if pivot is None:
+        return None
+    
+    pivot_index = input_list.index(pivot)
     
     
     partitioned_list, j = partition(input_list, pivot_index)  # Particiona
