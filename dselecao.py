@@ -30,6 +30,14 @@ def DSelect(input_list,i):
         return input_list[0]
     
     pivot_index = random.randint(0,n-1)
+    
+    C = []
+    for h in range(0,n/5):
+        C[h] = 
+    
+    pivot_index = DSelect(C,)
+    
+    
     partitioned_list, j = partition(input_list, pivot_index)  # Particiona
 	# Caso o elemento procurado esta no lado dos menores
     if i <= j:
